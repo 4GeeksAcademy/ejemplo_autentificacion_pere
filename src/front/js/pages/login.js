@@ -1,14 +1,16 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
     const { store, actions } = useContext(Context);
+    const navigate = useNavigate()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(email, password)
+        actions.login(email, password, navigate)
     }
 
     return (
